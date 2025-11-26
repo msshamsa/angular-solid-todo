@@ -1,8 +1,18 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+// src/app/app.config.ts
+import { ApplicationConfig } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
+import { TODO_REPOSITORY } from './core/domain/ports/todo.repsitory';
+import { HttpTodoRepository } from './core/infrastructure/adapters/http-todo.repository';
 
-import { routes } from './app.routes';
+
+
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+  providers: [
+    provideHttpClient(),
+    {
+      provide: TODO_REPOSITORY,            
+      useClass: HttpTodoRepository        
+    }
+  ]
 };
