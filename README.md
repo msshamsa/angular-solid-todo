@@ -15,3 +15,23 @@
 پیاده‌سازی شده.
 
 ## ساختار پروژه (Clean Architecture)
+src/app/
+├── core/
+│   ├── domain/          → مدل‌ها و قوانین کسب‌وکار (خالص!)
+│   ├── application/     → منطق برنامه (Use Cases)
+│   └── infrastructure/  → ارتباط با دنیای بیرون (HTTP, DB, etc.)
+├── ui/                  → فقط رابط کاربری (Angular Components)
+└── app.config.ts        → DI و تنظیمات سراسری
+
+
+## ویژگی‌ها
+- ۱۰۰٪ تست‌پذیر
+- کاملاً قابل توسعه (می‌تونی localStorage, GraphQL, Firebase اضافه کنی بدون دست زدن به منطق اصلی)
+- بدون NgModule
+- بدون RxJS در UI
+- کاملاً حرفه‌ای و Enterprise-ready
+
+## اجرا
+```bash
+npm install
+ng serve
